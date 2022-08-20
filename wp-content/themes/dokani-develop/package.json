@@ -1,0 +1,18 @@
+{
+  "name": "dokani",
+  "version": "1.0.0",
+  "description": "A WordPress marketplace theme",
+  "author": "weDevs",
+  "license": "GPL",
+  "private": true,
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-compress": "^1.4.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-less": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-wp-i18n": "^1.0.0"
+  }
+}
