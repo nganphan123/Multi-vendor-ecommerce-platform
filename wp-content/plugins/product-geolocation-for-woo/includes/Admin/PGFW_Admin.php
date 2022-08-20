@@ -15,12 +15,15 @@ class PGFW_Admin {
      * @since 1.0.0
      */
     public function __construct() {
+
         add_action( 'admin_notices', [ $this, 'render_missing_woocommerce_notice' ] );
         add_action( 'admin_notices', [ $this, 'render_missing_gmap_api_notice' ] );
         add_action( 'save_post', [ $this, 'save_product_tabs_data' ], 35, 3 );
 
         add_action( 'woocommerce_product_write_panel_tabs', [ $this, 'render_custom_product_tabs' ] );
         add_action( 'woocommerce_product_data_panels', [ $this, 'product_page_custom_tabs_panel' ] );
+        // Add product locator to vendor dashboard
+        add_action('dokan_new_product_form', [$this, 'product_page_custom_tabs_panel']);
     }
 
     /**

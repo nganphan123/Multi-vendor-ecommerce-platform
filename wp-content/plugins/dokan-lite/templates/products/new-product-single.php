@@ -46,10 +46,6 @@ $_sale_price_dates_to   = get_post_meta($post_id, '_sale_price_dates_to', true);
 $_sale_price_dates_from = !empty($_sale_price_dates_from) ? date_i18n('Y-m-d', $_sale_price_dates_from) : '';
 $_sale_price_dates_to   = !empty($_sale_price_dates_to) ? date_i18n('Y-m-d', $_sale_price_dates_to) : '';
 $show_schedule          = false;
-//product geolocation
-$get_address = get_post_meta( $post_id, '_wprwcp_product_gmap_address', true );
-$gmap_address = empty( $get_address ) ? product_geolocation_for_woo()->geolocation->global_address() : $get_address;
-//product geolocation
 
 if (!empty($_sale_price_dates_from) && !empty($_sale_price_dates_to)) {
     $show_schedule = true;
@@ -363,30 +359,6 @@ do_action('dokan_dashboard_wrap_before', $post, $post_id);
                             <?php wp_editor($post_content, 'post_content', apply_filters('dokan_product_description', array('editor_height' => 50, 'quicktags' => false, 'media_buttons' => false, 'teeny' => true, 'editor_class' => 'post_content'))); ?>
                         </div>
 
-                        <!-- Product geolocation -->
-                        <?php do_action('wc_product_geolocation_tabs_before', $post_id); ?>
-
-                        <div id="product-geolocation-for-woo-tabs-data" class="product-geolocation-for-woo-tabs panel woocommerce_options_panel hidden">
-                            <div class="wprwpg-tab-title-section">
-                                <h4>
-                                    <strong><?php esc_html_e('Set Product Geolocation', 'product-geolocation-for-woo'); ?></strong>
-                                </h4>
-                            </div>
-                            <div class="wprwpg-tab-content-section">
-                                <input type="hidden" name="wp_wpg_geolocation_geo_latitude" class="wp_wpg_geolocation_geo_latitude-text" value="<?php echo esc_attr($gmap_latitude); ?>">
-                                <input type="hidden" name="wp_wpg_geolocation_geo_longitude" class="wp_wpg_geolocation_geo_longitude-text" value="<?php echo esc_attr($gmap_longitude); ?>">
-                                <input type="hidden" name="wp_wpg_geolocation_geo_zoom_label" class="wp_wpg_geolocation_geo_zoom_label-number" value="<?php echo esc_attr($zoom_label); ?>">
-
-                                <input type="text" name="wp_wpg_geolocation_map_default_address" class="google_map_default_address-text" value="<?php echo esc_attr($gmap_address);?>">
-                                <div id="wc_product_geolocation_admin_default_address" class="wc_product_geolocation_product_gmap"></div>
-                                <?php wp_nonce_field('wprwpg_manage_product_location', 'wprwpg_manage_product_location_nonce'); ?>
-                            </div>
-                        </div><!-- .product-geolocation-for-woo-tabs -->
-                        <div><?php echo esc_attr($gmap_address);?></div>
-
-                        <?php do_action('wc_product_geolocation_tabs_after', $post_id); ?>
-                        <!-- Product geolocation -->
-
                         <?php do_action('dokan_new_product_form', $post, $post_id); ?>
                         <?php do_action('dokan_product_edit_after_main', $post, $post_id); ?>
 
@@ -400,7 +372,7 @@ do_action('dokan_dashboard_wrap_before', $post, $post_id);
 
                         <!--hidden input for Firefox issue-->
                         <input type="hidden" name="dokan_update_product" value="<?php esc_attr_e('Save Product', 'dokan-lite');?>" />
-                        <input type="submit" name="dokan_update_product" id="publish" class="dokan-btn dokan-btn-theme dokan-btn-lg dokan-right" value="<?php esc_attr_e('Save Product', 'dokan-lite');?>" <?php  update_post_meta( $post_id, '_wprwcp_product_gmap_address', $gmap_address );?> />
+                        <input type="submit" name="dokan_update_product" id="publish" class="dokan-btn dokan-btn-theme dokan-btn-lg dokan-right" value="<?php esc_attr_e('Save Product', 'dokan-lite');?>" />
                         <div class="dokan-clearfix"></div>
                     </form>
                 <?php } else { ?>

@@ -226,9 +226,10 @@ final class Product_Geolocation_For_Woo {
      */
     public function init_classes() {
         if ( is_admin() ) {
-            new \ProductGeolocationForWoo\Admin\PGFW_Admin();
             new \ProductGeolocationForWoo\Admin\PGFW_Menus();
         }
+
+        new \ProductGeolocationForWoo\Admin\PGFW_Admin();
 
         new \ProductGeolocationForWoo\PGFW_Assets();
 
