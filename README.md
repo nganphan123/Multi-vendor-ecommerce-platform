@@ -2,7 +2,7 @@
 
 ### A. About
 
-This is a marketplace (or multi-vendor) website for UBC students to sell and buy products. The website has 3 views:
+This is a marketplace (or multi-vendor) website for university students to sell and buy products. The website has 3 views:
 
 1. Admin view to control everything about WordPress site and other vendors
 2. Customer view for buyers to select products and check out
